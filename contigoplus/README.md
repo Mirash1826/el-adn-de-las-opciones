@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Contigo Plus
 
-## Getting Started
+Sitio web de escucha y compañía virtual con Marcela. Next.js (App Router) + Tailwind CSS, pensado para Vercel.
 
-First, run the development server:
+## Correr en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Dónde se edita cada cosa
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Precios, fotos, enlace de agenda, correo de contacto:** `src/lib/site.ts`
+- **Fotos de Marcela:** guardarlas en `public/marcela/` y poner la ruta en `site.fotos`
+- **Textos de cada sección:** `src/components/`
+- **Términos y privacidad:** `src/app/terminos/` y `src/app/privacidad/` (borradores, falta revisión legal)
 
-## Learn More
+## Variables de entorno
 
-To learn more about Next.js, take a look at the following resources:
+Copiar `.env.example` a `.env.local` (en Vercel: Settings → Environment Variables).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Para qué |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Dirección pública del sitio |
+| `NEXT_PUBLIC_CAL_LINK` | Evento de Cal.com, p. ej. `marcela/charla` |
+| `AUTH_SECRET` | Se genera con `npx auth secret` |
+| `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET` | Credenciales OAuth de Google |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sin estas variables el sitio funciona igual: el botón de Google aparece desactivado y la reserva muestra "La agenda abre muy pronto".
 
-## Deploy on Vercel
+## Pendiente
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Fotos reales de Marcela
+- Precios de los paquetes
+- Cal.com + pasarela de pago
+- Credenciales de Google
+- Dominio en Cloudflare apuntando a Vercel
+- Verificar los números de las líneas de ayuda en `src/lib/site.ts`
