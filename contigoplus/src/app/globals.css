@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+
+  --color-crema: #fffaf8;
+  --color-tinta: #33294f;
+  --color-tinta-suave: #6a6083;
+  --color-rosa-50: #fff1f5;
+  --color-rosa-100: #fde3ea;
+  --color-rosa-200: #fbcfdc;
+  --color-rosa-300: #f6aec4;
+  --color-rosa-600: #c8477a;
+  --color-cielo-50: #f1f7ff;
+  --color-cielo-100: #e0edfd;
+  --color-cielo-200: #c9dffb;
+  --color-cielo-300: #a7c9f5;
+  --color-cielo-700: #2f5f9e;
+  --color-lila-100: #ece6fb;
+  --color-lila-200: #dcd2f7;
+  --color-menta-100: #dff5ec;
+  --color-durazno-100: #ffeadb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-crema);
+  color: var(--color-tinta);
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-cielo-700);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.fondo-suave {
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, var(--color-cielo-100), transparent 60%),
+    radial-gradient(45rem 28rem at 0% 10%, var(--color-rosa-100), transparent 60%),
+    var(--color-crema);
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.flotar { animation: flotar 7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .flotar { animation: none; }
+}
